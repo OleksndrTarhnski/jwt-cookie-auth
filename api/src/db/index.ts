@@ -1,10 +1,8 @@
 import mongoose, { ConnectOptions } from 'mongoose';
 
-const url = 'mongodb+srv://Oleksandr:Ne7CqANcU9W@cluster0.engpcsf.mongodb.net/';
-
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(process.env.MONGO_DB_URL as string, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as ConnectOptions);

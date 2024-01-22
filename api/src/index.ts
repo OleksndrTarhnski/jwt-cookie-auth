@@ -7,10 +7,13 @@ import cookieParser from 'cookie-parser';
 
 import connectToDatabase from './db';
 import User from './db/models/User';
-import { verifyToken, IAuthenticateRequest } from './middlewares';
+import { 
+  verifyToken, 
+  IAuthenticateRequest,
+} from './middlewares';
 
 const corsConfig = {
-  origin: 'http://localhost:3000',
+  origin: process.env.CLIENT_URL,
   methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
   allowedHeaders: 'Content-Type, Accepts, Authorization, Access-Control-Allow-Credentials',
   credentials: true,
