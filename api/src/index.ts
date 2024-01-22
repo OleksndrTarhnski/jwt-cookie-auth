@@ -7,10 +7,12 @@ import cookieParser from 'cookie-parser';
 
 import connectToDatabase from './db';
 import User from './db/models/User';
-import { 
-  verifyToken, 
+import {
+  verifyToken,
   IAuthenticateRequest,
 } from './middlewares';
+
+dotenv.config();
 
 const corsConfig = {
   origin: process.env.CLIENT_URL,
@@ -18,8 +20,6 @@ const corsConfig = {
   allowedHeaders: 'Content-Type, Accepts, Authorization, Access-Control-Allow-Credentials',
   credentials: true,
 };
-
-dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 8080;
@@ -40,7 +40,7 @@ app.post('/register', async (req: Request, res: Response) => {
     if (user) return res.status(400).json({ message: `User with email ${email} already exists` });
 
     const hashedPassword = await bcrypt.hash(password.toString(), 10);
-    
+
     const newUser = new User({
       email,
       userName,
