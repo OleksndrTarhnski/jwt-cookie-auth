@@ -97,6 +97,17 @@ app.get('/me', verifyToken, async (req: IAuthenticateRequest, res: Response) => 
   }
 });
 
+app.post('/logout', verifyToken, async (req: IAuthenticateRequest, res: Response) => {
+  try {
+    res.cookie('token', '', { httpOnly: true, expires: new Date(0) });
+
+    return res.status(200).json({ message: 'Logout successful' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });

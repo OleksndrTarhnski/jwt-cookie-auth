@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { api } from '../../api';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleLogout = () => {
+    api.post('/logout')
+      .then(() => navigate('/login'))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -48,6 +55,12 @@ const Navbar: React.FC = () => {
           >
             News
           </Link>
+          <button
+            className="btn border-white border-2 text-white"
+            onClick={handleLogout}
+          >
+            Log out
+          </button>
         </div>
       </div>
       <div className={`lg:hidden mobile-menu ${isOpen ? 'open' : 'closed'}`}>

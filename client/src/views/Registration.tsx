@@ -141,7 +141,7 @@ const Registration: React.FC = () => {
 
       <button
         type="submit"
-        className="btn-primary"
+        className="btn-primary w-full"
       >
         Sign up
       </button>

@@ -75,7 +75,7 @@ const Login: React.FC = () => {
 
       <button
         type="submit"
-        className="btn-primary"
+        className="btn-primary w-full"
       >
         Login
       </button>
