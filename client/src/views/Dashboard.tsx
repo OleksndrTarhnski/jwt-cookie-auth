@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
-
-import { api } from '../api';
+import React from 'react';
 
 const Dashboard: React.FC = () => {
-  useEffect(() => {
-    api.get('/me');
-  }, []);
-
   return (
     <div>
-      
+
     </div>
   );
 };

@@ -30,3 +30,15 @@ textarea:focus-visible {
     @apply text-red-500 text-xs font-semibold mt-1;
   }
 }
+
+.mobile-menu {
+  @apply max-h-0 overflow-hidden transition-all duration-500 ease-out opacity-0;
+}
+
+.mobile-menu.open {
+  @apply max-h-screen opacity-100;
+}
+
+.mobile-open {
+  @apply overflow-hidden;
+}
