@@ -6,7 +6,6 @@ export interface IAuthenticateRequest extends Request {
 }
 
 export const verifyToken = (req: IAuthenticateRequest, res: Response, next: NextFunction) => {
-  console.log(req.cookies)
   const token = req.cookies.token;
 
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
