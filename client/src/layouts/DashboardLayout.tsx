@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { api } from '../api';
 import Navbar from './components/Navbar';
 
 const DashboardLayout: React.FC = () => {
   const [data, setData] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    api.get('/me').then(({ data }) => setData(data));
-  }, []);
+    api.get('/me')
+      .then(({ data }) => setData(data))
+      .catch((err) => {
+        if (err.response.status === 401) navigate('/login');
+      });
+  }, [navigate]);
 
   return (
     <div>

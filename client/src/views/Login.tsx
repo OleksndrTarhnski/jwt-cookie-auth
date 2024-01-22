@@ -56,7 +56,7 @@ const Login: React.FC = () => {
         }
       </div>
 
-      <div className="mb-4">
+      <div className="mb-7">
         <label htmlFor="password">
           Password
         </label>
