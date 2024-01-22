@@ -11,10 +11,10 @@ interface ILogin {
 }
 
 const Login: React.FC = () => {
-  const { 
-    register, 
+  const {
+    register,
     handleSubmit,
-    formState: { errors } 
+    formState: { errors }
   } = useForm<ILogin>();
   const navigate = useNavigate();
 
@@ -30,15 +30,12 @@ const Login: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto mt-8 p-6">
-      <h1 className="text-2xl mb-8 text-gray-700">
+      <h1 className="mb-8">
         Sign in
       </h1>
 
       <div className="mb-4">
-        <label 
-          className="block text-gray-500 text-sm font-semibold mb-2"
-          htmlFor="email"
-        >
+        <label htmlFor="email">
           Email
         </label>
         <input
@@ -50,49 +47,44 @@ const Login: React.FC = () => {
             },
           })}
           id="email"
-          className="w-full text-gray-500 font-semibold border-2 border-gray-400 rounded-3xl py-2 px-4 focus:border-violet-500 focus:shadow-md"
         />
         {
-          errors.email && 
-          <p className="text-red-500 text-xs font-semibold mt-1">
+          errors.email &&
+          <p className="validation-error">
             {errors.email.message}
           </p>
         }
       </div>
 
       <div className="mb-4">
-        <label 
-          className="block text-gray-500 text-sm font-semibold mb-2"
-          htmlFor="password"
-        >
+        <label htmlFor="password">
           Password
         </label>
         <input
           {...register('password', { required: 'This field is required' })}
           id="password"
-          className="w-full text-gray-500 font-semibold border-2 border-gray-400 rounded-3xl py-2 px-4 focus:border-violet-500 focus:shadow-md"
           type="password"
         />
         {
-          errors.password && 
-          <p className="text-red-500 text-xs font-semibold mt-1">
+          errors.password &&
+          <p className="validation-error">
             {errors.password.message}
           </p>
         }
       </div>
 
-      <button 
-        type="submit" 
-        className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-3xl font-light w-full hover:shadow-lg"
+      <button
+        type="submit"
+        className="btn-primary"
       >
         Login
       </button>
 
-      <p className="text-gray-500 text-sm mt-4">
+      <p className="text-gray-500 text-sm mt-4 font-light">
         Not registered yet?{' '}
-        <Link 
+        <Link
           to="/register"
-          className="text-violet-500"
+          className="text-violet-500 font-semibold"
         >
           Sign up
         </Link>{' '}

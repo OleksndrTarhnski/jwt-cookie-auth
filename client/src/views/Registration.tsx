@@ -15,11 +15,11 @@ interface IRegisterForm {
 }
 
 const Registration: React.FC = () => {
-  const { 
-    register, 
+  const {
+    register,
     handleSubmit,
     watch,
-    formState: { errors } 
+    formState: { errors }
   } = useForm<IRegisterForm>();
   const navigate = useNavigate();
 
@@ -38,14 +38,11 @@ const Registration: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto mt-8 p-6">
-      <h1 className="text-2xl mb-8 text-gray-700">
+      <h1 className="mb-8">
         Sign up
       </h1>
       <div className="mb-4">
-        <label 
-          className="block text-gray-500 text-sm font-semibold mb-2"
-          htmlFor="userName"
-        >
+        <label htmlFor="userName">
           Full Name
         </label>
         <input
@@ -57,21 +54,17 @@ const Registration: React.FC = () => {
             }
           })}
           id="userName"
-          className="w-full text-gray-500 font-semibold border-2 border-gray-400 rounded-3xl py-2 px-4 focus:border-violet-500 focus:shadow-md"
         />
         {
-          errors.userName && 
-          <p className="text-red-500 text-xs font-semibold mt-1">
+          errors.userName &&
+          <p className="validation-error">
             {errors.userName.message}
           </p>
         }
       </div>
 
       <div className="mb-4">
-        <label 
-          className="block text-gray-500 text-sm font-semibold mb-2"
-          htmlFor="email"
-        >
+        <label htmlFor="email">
           Email
         </label>
         <input
@@ -83,58 +76,49 @@ const Registration: React.FC = () => {
             },
           })}
           id="email"
-          className="w-full text-gray-500 font-semibold border-2 border-gray-400 rounded-3xl py-2 px-4 focus:border-violet-500 focus:shadow-md"
         />
         {
-          errors.email && 
-          <p className="text-red-500 text-xs font-semibold mt-1">
+          errors.email &&
+          <p className="validation-error">
             {errors.email.message}
           </p>
         }
       </div>
 
       <div className="mb-4">
-        <label 
-          className="block text-gray-500 font-semibold text-sm mb-2"
-          htmlFor="password"
-        >
+        <label htmlFor="password">
           Password
         </label>
         <input
           {...register('password', { required: 'This field is required' })}
           id="password"
-          className="w-full text-gray-500 font-semibold border-2 border-gray-400 rounded-3xl py-2 px-4 focus:border-violet-500 focus:shadow-md"
           type="password"
         />
         {
-          errors.password && 
-          <p className="text-red-500 text-xs font-semibold mt-1">
+          errors.password &&
+          <p className="validation-error">
             {errors.password.message}
           </p>
         }
       </div>
 
       <div className="mb-4">
-        <label 
-          className="block text-gray-500 text-sm font-semibold mb-2"
-          htmlFor="confirmPassword"
-        >
+        <label htmlFor="confirmPassword">
           Confirm Password
         </label>
         <input
-          {...register('confirmPassword', { 
+          {...register('confirmPassword', {
             required: 'This field is required',
             validate: (value: string) => {
               if (watch('password') !== value) return 'Passwords don\'t match'
             }
           })}
           id="confirmPassword"
-          className="w-full text-gray-500 font-semibold border-2 border-gray-400 rounded-3xl py-2 px-4 focus:border-violet-500 focus:shadow-md"
           type="password"
         />
         {
-          errors.confirmPassword && 
-          <p className="text-red-500 text-xs font-semibold mt-1">
+          errors.confirmPassword &&
+          <p className="validation-error">
             {errors.confirmPassword.message}
           </p>
         }
@@ -147,26 +131,26 @@ const Registration: React.FC = () => {
           type="checkbox"
           className="mr-2"
         />
-        <label 
-          className={`text-sm ${errors.agreeTerms ? 'text-red-500' : 'text-gray-500'}`}
+        <label
+          className={`mb-0 font-light text-sm ${errors.agreeTerms ? 'text-red-500' : 'text-gray-500'}`}
           htmlFor="agreeToTerms"
         >
           I agree to the terms and conditions
         </label>
       </div>
 
-      <button 
-        type="submit" 
-        className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white py-2 px-4 rounded-3xl font-light w-full hover:shadow-lg"
+      <button
+        type="submit"
+        className="btn-primary"
       >
         Sign up
       </button>
 
-      <p className="text-gray-500 text-sm mt-4">
+      <p className="text-gray-500 text-sm mt-4 font-light">
         Already have account?{' '}
-        <Link 
+        <Link
           to="/login"
-          className="text-violet-500"
+          className="text-violet-500 font-semibold"
         >
           Sign in
         </Link>
