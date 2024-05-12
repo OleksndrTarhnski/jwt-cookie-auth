@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLogout = () => {
-    api.post('/logout')
+    api.post('/user/logout')
       .then(() => navigate('/login'))
       .catch((err) => console.log(err));
   };

@@ -20,7 +20,7 @@ const Login: React.FC = () => {
 
   const onSubmit: SubmitHandler<ILogin> = async (data) => {
     try {
-      const res = await api.post('/login', data);
+      const res = await api.post('/user/login', data);
       console.log(res);
       navigate('/');
     } catch (error) {

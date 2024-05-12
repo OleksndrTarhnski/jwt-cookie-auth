@@ -9,7 +9,7 @@ const DashboardLayout: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get('/me')
+    api.get('/user/me')
       .then(({ data }) => setData(data))
       .catch((err) => {
         if (err.response.status === 401) navigate('/login');
